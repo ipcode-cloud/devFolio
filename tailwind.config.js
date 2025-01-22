@@ -8,7 +8,7 @@ export default {
     extend: {
       backgroundImage: {
         'custom-radial': 'radial-gradient(circle, #763CAC 2%,#320F85 20%, transparent 70%)',
-        'custom-radial-card1': 'radial-gradient(#130428 2%,#251043 10%,#38126 2%,#261045 2%,#190634 2%,  transparent 70%)',
+        'custom-radial1': 'radial-gradient(circle, #763CAC 2%,#320F85 40%, transparent 60%)',
       },
     },
   },

@@ -1,29 +1,86 @@
+import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SOCIAL_LINKS } from "../constants/socialLinks";
+import { Link } from "react-router-dom";
+
 const Hero = () => {
   return (
-    <div className="text-white flex justify-around items-center min-h-screen gap-10">
-      <div className="bg-custom-radial h-[28rem] w-[28rem] shadow-lg rounded-full border border-slate-900 flex items-center justify-center relative">
-        <img
-          src="./Arrow.png"
-          alt="arrow"
-          className="absolute -top-7 right-[5rem]"
-        />
-        <img src="./Me.png" alt="profile" width={250} className="aspect-auto" />
-      </div>
-      <div className="md:basis-1/2 flex flex-col h-[28rem] justify-start relative">
-        <h1 className="text-3xl font-mono absolute -left-[14rem]">
-          Hello! I Am <span className="text-[#7127BA]">Irankunda</span>
-        </h1>
-        <h2 className="absolute -left-[12rem] top-[7rem] text-4xl">
-          <span className="font-mono text-3xl">A Programmer Who</span> <br />{" "}
-          Writes Code Like a <span className="text-[#7127BA] relative">
-          <img src="./Ellipse 5.png"width={400} className="absolute right-0 -top-10 h-[9rem] w-[6rem] rotate-45" alt="ellipse" />
-            Story</span> —{" "}
-          <br />{" "}
-          <span className="text-xl text-slate-500">
-            {" "}
-            Because If It's Not Readable, How Will It Run?
-          </span>
-        </h2>
+    <div className="min-h-screen flex items-center justify-center px-4 overflow-hidden">
+      <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center">
+        {/* Text Content */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-white space-y-6"
+        >
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-lg text-purple-500 font-medium"
+          >
+            Hello! I am
+          </motion.h2>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="text-4xl md:text-6xl font-bold"
+          >
+            Irankunda
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="text-xl md:text-2xl text-gray-400 max-w-lg"
+          >
+            A programmer who crafts elegant solutions through clean, efficient code.
+          </motion.p>
+          
+          {/* Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="flex gap-4 pt-4"
+          >
+            <Link
+              to={SOCIAL_LINKS.GITHUB}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              <FaGithub size={24} />
+            </Link>
+            <Link
+              to={SOCIAL_LINKS.LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              <FaLinkedin size={24} />
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        {/* Image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="relative"
+        >
+          <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] mx-auto">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full filter blur-xl animate-pulse"></div>
+            <img
+              src="./Me.png"
+              alt="profile"
+              className="relative z-10 w-full h-full object-contain"
+            />
+          </div>
+        </motion.div>
       </div>
     </div>
   );

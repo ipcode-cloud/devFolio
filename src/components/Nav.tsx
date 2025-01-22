@@ -1,45 +1,89 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaBurger, FaX } from "react-icons/fa6";
-import { Link, useLocation} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
-const links=[
-  {
-    name:"Home",
-    to:"/"
-  },
-  {
-    name:"About",
-    to:"/about"
-  },
-  {
-    name:"Contact",
-    to:"/contact"
-  }
-]
-const  Nav = () => {
-  const loc=useLocation()
-  const path = loc.pathname
-  const [menu, setMenu] = useState(true)
-  console.log(menu);
-  
-  
+const Nav = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  // Close menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  const navItems = [
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "/contact", label: "Contact" },
+  ];
+
   return (
-    <header className="relative flex justify-between md:justify-around p-5 gap-5 items-center bg-[#1A0B2E] h-[113px] w-full">
-        <h1 className="max-sm:text-xl leading-tight text-3xl text-white font-extrabold">i.</h1>
-      <nav className="hidden md:flex basis-1/2 justify-around text-xl text-white">
-      {links.map((link)=>(
-        <Link to={link.to} key={link.name} className={`${path==link.to?"max-sm:text-sm border-b-2 p-1 transition-all text-slate-300":""}`}>{link.name}</Link>
-      ))}
-      </nav>
-      <button className="text-white font-bold text-2xl md:hidden" onClick={()=>setMenu(!menu)}>{menu?<FaX/> :<FaBurger/>}</button>
-      {/*  moibile*/}
-      <nav className={`absolute ${menu?"flex" :"hidden"} md:hidden transition duration-75 flex-col top-[10rem] right-0 bottom-5 p-10 gap-5 bg-[#200d3a] shadow-xl min-h-[12rem] text-xl text-white z-10`}>
-        
-      {links.map((link)=>(
-        <Link to={link.to} key={link.name} className={`${path==link.to?"max-sm:text-sm border-b rounded-sm p-1 transition-all text-slate-300":""}`}>{link.name}</Link>
-      ))}
-      </nav>
-    </header>
+    <nav className="fixed w-full z-50 bg-[#13111C]/80 backdrop-blur-sm">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link to="/" className="text-2xl font-bold text-white">
+            i.
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`relative text-lg ${
+                  location.pathname === item.path ? "text-slate-300" : "text-gray-300 hover:text-white"
+                }`}
+              >
+                {item.label}
+                {location.pathname === item.path && (
+                  <motion.div
+                    layoutId="underline"
+                    className="absolute left-0 right-0 h-0.5 bg-slate-300 bottom-[-4px]"
+                  />
+                )}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-white p-2"
+          >
+            {isOpen ? <FaX size={24} /> : <FaBurger size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-[#1E1B2C]"
+          >
+            <div className="container mx-auto px-4 py-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`block py-2 text-lg ${
+                    location.pathname === item.path ? "text-slate-300" : "text-gray-300"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 };
 

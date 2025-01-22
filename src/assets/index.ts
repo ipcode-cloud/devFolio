@@ -1,3 +1,6 @@
+
+export const icons=["icons.png", "icon1.png","icon2.png","icon3.png"]
+
 export const about=`I’m a programmer who believes that great code is more than just functional—it’s readable, elegant, and scalable. Just like a compelling story, every line of code I write is crafted with clarity and purpose, ensuring both humans and machines can understand it effortlessly.
 
 With a passion for solving complex problems and building seamless digital experiences, I turn ideas into robust solutions. Whether it’s designing scalable architectures, debugging intricate issues, or writing clean, maintainable code, I approach every challenge with curiosity and creativity.

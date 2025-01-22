@@ -1,0 +1,10 @@
+
+POST https://api.web3forms.com/submit
+Content-Type: application/json
+
+{
+"access_key": "c695453a-b14e-43bb-a7b3-dcdb1f3db3d0",
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "message": "This is a test message."
+}
