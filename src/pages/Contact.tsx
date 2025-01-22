@@ -76,6 +76,7 @@ const Contact: React.FC = () => {
   
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const formData = new FormData(e.target as HTMLFormElement);
     
     formData.append('access_key', import.meta.env.VITE_WEB3FORMS_KEY as string);
