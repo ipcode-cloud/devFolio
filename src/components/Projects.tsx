@@ -28,7 +28,6 @@ const projects: Project[] = [
     image: "./todo.png",
     technologies: ["Laravel", "Tailwind CSS", "Alpine.js"],
     githubLink: "https://github.com/ipcode-cloud/todoApp",
-    liveLink: "https://todoapp-main-8vo34m.laravel.cloud",
     featured: true
   },
   {
