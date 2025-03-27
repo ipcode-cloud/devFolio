@@ -23,13 +23,22 @@ const projects: Project[] = [
     featured: true
   },
   {
-    title: "E-commerce Dashboard",
-    description: "A comprehensive dashboard for managing online store operations. Features real-time analytics and inventory management.",
-    image: "./ecommerce.png",
-    technologies: ["Next.js", "Redux", "Node.js", "MongoDB"],
-    githubLink: "https://github.com/yourusername/ecommerce-dashboard",
+    title: "Todo App",
+    description: "A todo app built with React, TypeScript, and Tailwind CSS. Features a clean and intuitive interface.",
+    image: "./todo.png",
+    technologies: ["Laravel", "Tailwind CSS", "Alpine.js"],
+    githubLink: "https://github.com/ipcode-cloud/todoApp",
+    liveLink: "https://todoapp-main-8vo34m.laravel.cloud",
     featured: true
   },
+  {
+      title: "E-commerce Dashboard",
+      description: "A comprehensive dashboard for managing online store operations. Features real-time analytics and inventory management.",
+      image: "./ecommerce.png",
+      technologies: ["Next.js", "Redux", "Node.js", "MongoDB"],
+      githubLink: "https://github.com/yourusername/ecommerce-dashboard",
+      featured: true
+    },
   {
     title: "Weather App",
     description: "A beautiful weather application that provides real-time weather updates with animated visualizations.",
