@@ -24,7 +24,7 @@ const projects: Project[] = [
   },
   {
     title: "Todo App",
-    description: "A todo app built with React, TypeScript, and Tailwind CSS. Features a clean and intuitive interface.",
+    description: "A todo app built with Laravel, Alpine.js and Tailwind CSS. Features a clean and intuitive interface.",
     image: "./todo.png",
     technologies: ["Laravel", "Tailwind CSS", "Alpine.js"],
     githubLink: "https://github.com/ipcode-cloud/todoApp",
